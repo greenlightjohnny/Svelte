@@ -35,6 +35,12 @@
   const toggleModal = () => {
     showModal = !showModal;
   };
+
+  const addPersonEvent = (e) => {
+    const person = e.detail;
+    people = [person, ...people];
+    showModal = false;
+  };
 </script>
 
 <style>
@@ -78,7 +84,7 @@
 {/if}
 <Modal {showModal} isPromo={false} on:click={toggleModal}>
   <!-- <h3>Add a new person</h3> -->
-  <FormPerson />
+  <FormPerson on:addPerson={addPersonEvent} />
 </Modal>
 <main>
   <!-- <p>{fullName} - belt</p>
